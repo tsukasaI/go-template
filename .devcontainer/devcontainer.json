@@ -2,7 +2,7 @@
     "name": "go-template",
     "dockerComposeFile": "docker-compose.yaml",
     "service": "app",
-    "workspaceFolder": "/app",
+    "workspaceFolder": "/work/app",
     "customizations": {
       "vscode": {
         "settings": {
@@ -13,5 +13,7 @@
         },
         "extensions": ["golang.Go", "eamodio.gitlens", "hediet.vscode-drawio"]
       }
-    }
+    },
+    "postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}"
+
   }

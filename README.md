@@ -7,7 +7,7 @@
 ## Develop
 
 1. Install `Dev Containers` to your local VSCode
-1. Press F1 key and exec `Rebuild Container`
+1. Press F1 key and exec `Reopen in Container`
 
 ## Production build
 

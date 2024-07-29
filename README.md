@@ -14,8 +14,3 @@
 ```
 docker build -f production/Dockerfile .
 ```
-
-TODO
-
-- devcontainerの設定
-  - shの見栄え良くする（switchしてるbranch表示したい）

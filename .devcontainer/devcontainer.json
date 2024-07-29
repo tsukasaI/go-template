@@ -1,0 +1,17 @@
+{
+    "name": "go-template",
+    "dockerComposeFile": "docker-compose.yaml",
+    "service": "app",
+    "workspaceFolder": "/app",
+    "customizations": {
+      "vscode": {
+        "settings": {
+          "terminal.integrated.defaultProfile.linux": "bash",
+          "go.toolsManagement.checkForUpdates": "local",
+          "go.useLanguageServer": true,
+          "go.gopath": "/go"
+        },
+        "extensions": ["golang.Go", "eamodio.gitlens", "hediet.vscode-drawio"]
+      }
+    }
+  }

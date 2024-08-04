@@ -12,7 +12,7 @@ type (
 		ur repository.SampleRepositoryInterface
 	}
 	GetSampleUsecaseInterface interface {
-		Execute(sub string) (*result.GetSampleResponse, customErrors.ErrInterface)
+		Execute() (*result.GetSampleResponse, customErrors.ErrInterface)
 	}
 )
 
@@ -20,8 +20,8 @@ func NewGetSampleUsecase(ur repository.SampleRepositoryInterface) GetSampleUseca
 	return &getSampleUsecase{ur: ur}
 }
 
-func (gpmu *getSampleUsecase) Execute(sub string) (*result.GetSampleResponse, customErrors.ErrInterface) {
-	profile, err := gpmu.ur.FindOneBySub(sub)
+func (gpmu *getSampleUsecase) Execute() (*result.GetSampleResponse, customErrors.ErrInterface) {
+	profile, err := gpmu.ur.FindOneBySub()
 	if errors.Is(err, customErrors.NotFoundErr) {
 		return &result.GetSampleResponse{}, nil
 	}

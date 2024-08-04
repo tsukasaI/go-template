@@ -12,7 +12,7 @@ type (
 	}
 
 	SampleRepositoryInterface interface {
-		FindOneBySub(sub string) (*entity.Sample, error)
+		FindOneBySub() (*entity.Sample, error)
 	}
 )
 
@@ -21,10 +21,10 @@ func NewSampleRepository(sqlHandler *db.SQLHandler) SampleRepositoryInterface {
 	return &sampleRepository{sqlHandler: sqlHandler}
 }
 
-func (ur *sampleRepository) FindOneBySub(sub string) (*entity.Sample, error) {
-	sampleEntity := new(model.Sample)
-	err := ur.sqlHandler.Conn.Model(&model.Sample{}).Select([]string{"id", "name"}).Where("sub = ?", sub).First(sampleEntity).Error
-	return ur.convertEntity(sampleEntity), err
+func (ur *sampleRepository) FindOneBySub() (*entity.Sample, error) {
+	sampleModel := new(model.Sample)
+	err := ur.sqlHandler.Conn.Select([]string{"id", "name"}).First(sampleModel).Error
+	return ur.convertEntity(sampleModel), err
 }
 
 func (ur *sampleRepository) convertEntity(sample *model.Sample) *entity.Sample {

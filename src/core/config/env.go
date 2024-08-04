@@ -5,11 +5,11 @@ import (
 )
 
 type config struct {
-	MySQLHost     string `env:"MYSQL_HOST"`
-	MySQLUser     string `env:"MYSQL_USER"`
-	MySQLPassword string `env:"MYSQL_PASSWORD"`
+	MySQLHost     string `env:"MYSQL_HOST,required"`
+	MySQLUser     string `env:"MYSQL_USER,required"`
+	MySQLPassword string `env:"MYSQL_PASSWORD,required"`
 	MySQLPort     int    `env:"MYSQL_PORT" envDefault:"3306"`
-	MySQLDatabase string `env:"MYSQL_DATABASE"`
+	MySQLDatabase string `env:"MYSQL_DATABASE,required"`
 }
 
 var cfg config

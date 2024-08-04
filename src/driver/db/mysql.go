@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"my-go-template/src/core/config"
 
+	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
 
@@ -12,14 +13,12 @@ type SQLHandler struct {
 }
 
 func NewMysqlSQLHandler() *SQLHandler {
-	// conn, err := gorm.Open(mysql.Open(getMysqlDSN()))
+	conn, err := gorm.Open(mysql.Open(getMysqlDSN()))
 
-	// if err != nil {
-	// 	panic(err)
-	// }
-	// return &SqlHandler{Conn: conn}
-	fmt.Println(getMysqlDSN())
-	return &SQLHandler{Conn: &gorm.DB{}}
+	if err != nil {
+		panic(err)
+	}
+	return &SQLHandler{Conn: conn}
 }
 
 func getMysqlDSN() string {

@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"log/slog"
+	"my-go-template/src/driver/db/migrate"
 	"my-go-template/src/driver/web"
 	"os"
 	"os/signal"
@@ -16,6 +17,8 @@ import (
 func main() {
 	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
 	defer stop()
+
+	migrate.Execute()
 
 	engine := gin.Default()
 	r := web.NewEngine(engine)

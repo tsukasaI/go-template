@@ -14,3 +14,14 @@ services:
     working_dir: /work/app
     ports:
       - "8000:8000"
+  db:
+    container_name: "go-template_db"
+    image: mysql:8.0
+    platform: linux/x86_64
+    command: --default-authentication-plugin=mysql_native_password
+    env_file:
+      - .env.local
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    ports:
+      - "3306:3306"

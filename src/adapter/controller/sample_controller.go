@@ -21,6 +21,6 @@ func NewSampleController(gpmu usecase.GetSampleUsecaseInterface) SampleControlle
 }
 
 func (pc *SampleController) ExecuteGetSample(ctx *gin.Context) {
-	Sample, err := pc.gpmu.Execute("")
+	Sample, err := pc.gpmu.Execute()
 	response.GenerateResponse(ctx, Sample, err)
 }

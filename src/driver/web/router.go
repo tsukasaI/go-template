@@ -17,7 +17,7 @@ func (e *Engine) SetupRouter() {
 
 	sampleController := di.GetSampleController()
 	{
-		v1Router.GET("/profiles/me", sampleController.ExecuteGetSample)
+		v1Router.GET("/samples", sampleController.ExecuteGetSample)
 	}
 
 }

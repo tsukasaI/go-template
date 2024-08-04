@@ -55,4 +55,4 @@ up には反映用のSQLで、down には切り戻し用の SQL を記述しま�
 TODO
 - use echo instead of gin
 - prd docker env
-- golang migrate
+- debugger

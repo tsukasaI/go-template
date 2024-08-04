@@ -14,3 +14,8 @@
 ```
 docker build -f production/Dockerfile .
 ```
+
+TODO
+- config ENV
+- use echo instead of gin
+-

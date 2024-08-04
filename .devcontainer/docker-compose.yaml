@@ -5,6 +5,8 @@ services:
       context: ./
     tty: true
     container_name: go-template
+    env_file:
+      - .env.local
     volumes:
       - ../:/work/app
       - ~/.gitconfig:/root/.gitconfig

@@ -46,6 +46,7 @@ USER $USERNAME
 RUN go install github.com/air-verse/air@latest
 RUN go install -v golang.org/x/tools/gopls@latest
 RUN go install github.com/evilmartians/lefthook@latest
+RUN go install -v github.com/go-delve/delve/cmd/dlv@latest
 
 # prompt
 RUN echo "PS1='\[\e[38;5;45m\]\u\[\e[0m\]@\h:\w \$ '" >> ~/.bashrc

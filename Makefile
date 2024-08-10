@@ -21,4 +21,4 @@ lint:
 ## build
 .PHONY: build
 build:
-	@go build ./src/cli/main.go
+	@go build ./src/cmd/main.go

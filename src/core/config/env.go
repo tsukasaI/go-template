@@ -5,6 +5,8 @@ import (
 )
 
 type config struct {
+	Port          int    `env:"PORT" envDefault:"8000"`
+	LogLevel      string `env:"LOG_LEVEL,required"`
 	MySQLHost     string `env:"MYSQL_HOST,required"`
 	MySQLUser     string `env:"MYSQL_USER,required"`
 	MySQLPassword string `env:"MYSQL_PASSWORD,required"`
@@ -18,6 +20,14 @@ func init() {
 	if err := env.Parse(&cfg); err != nil {
 		panic(err)
 	}
+}
+
+func Port() int {
+	return cfg.Port
+}
+
+func LogLevel() string {
+	return cfg.LogLevel
 }
 
 func MySQLHost() string {

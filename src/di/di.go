@@ -16,3 +16,13 @@ func GetSampleController() controller.SampleControllerInterface {
 		),
 	)
 }
+
+func GetSampleEchoController() controller.SampleEchoControllerInterface {
+	return controller.NewSampleEchoController(
+		usecase.NewGetSampleUsecase(
+			repository.NewSampleRepository(
+				db.NewMysqlSQLHandler(),
+			),
+		),
+	)
+}

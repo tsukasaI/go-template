@@ -25,6 +25,14 @@ func NewErrorResponse(requestID string, err customErrors.ErrInterface) *ErrorRes
 	}
 }
 
+func NewEchoErrorResponse(requestID string, err customErrors.ErrInterface) (int, any) {
+	return err.GetStatusCode(), &ErrorResponse{
+		RequestID: requestID,
+		Timestamp: time.Now().Format("2006-01-02T15:04:05+09:00"),
+		Error:     *newError(err),
+	}
+}
+
 func newError(err customErrors.ErrInterface) *Error {
 	return &Error{
 		Message: err.GetMessage(),

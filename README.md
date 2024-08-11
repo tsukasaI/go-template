@@ -59,4 +59,3 @@ $ migrate create -ext sql -dir src/driver/db/migrate/sql -seq drop_{カラム名
 TODO
 - use echo instead of gin and graceful stop
 - prd docker env
-- slog

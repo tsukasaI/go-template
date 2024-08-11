@@ -6,12 +6,11 @@ import (
 	"log/slog"
 	"my-go-template/src/driver/db/migrate"
 	"my-go-template/src/driver/web"
+	"my-go-template/src/pkg/echo"
 	"os"
 	"os/signal"
 	"syscall"
 	"time"
-
-	"github.com/gin-gonic/gin"
 )
 
 func main() {
@@ -20,22 +19,27 @@ func main() {
 
 	migrate.Execute()
 
-	engine := gin.Default()
-	r := web.NewEngine(engine)
-	r.SetupRouter()
+	echoEngine := echo.New()
+	e := web.NewEchoEngine(echoEngine)
 
 	go func() {
-		if err := r.Engine.Run(); err != nil {
+		if err := e.Start(); err != nil {
 			slog.ErrorContext(ctx, fmt.Sprintf("failed to start server: %s", err.Error()))
 			os.Exit(1)
 		}
 	}()
+
+	slog.Info("server started")
 
 	<-ctx.Done()
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
 
 	// graceful shutdown
+	if err := echoEngine.Shutdown(ctx); err != nil {
+		slog.Error(err.Error())
+		os.Exit(1)
+	}
 	slog.Info("graceful shutdown complete")
 
 }

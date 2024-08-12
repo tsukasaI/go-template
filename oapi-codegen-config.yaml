@@ -1,0 +1,4 @@
+package: schemas
+output: src/adapter/controller/schemas/schema.gen.go
+generate:
+  models: true

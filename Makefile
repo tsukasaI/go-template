@@ -18,6 +18,11 @@ test:
 lint:
 	@golangci-lint run --fix
 
+## oapi-codegen
+.PHONY: oapi-codegen
+oapi-codegen:
+	@oapi-codegen --config=oapi-codegen-config.yaml ./docs/openapi.yaml
+
 ## build
 .PHONY: build
 build:

@@ -1,6 +1,6 @@
 {
   "name": "go-template",
-  "dockerComposeFile": "docker-compose.yaml",
+  "dockerComposeFile": "compose.yaml",
   "service": "app",
   "workspaceFolder": "/work/app",
   "customizations": {

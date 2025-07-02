@@ -2,13 +2,12 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Attach to Server",
+      "name": "Launch Server",
       "type": "go",
-      "request": "attach",
-      "mode": "remote",
-      "remotePath": "/work/app",
-      "port": 40000,
-      "host": "localhost",
+      "request": "launch",
+      "mode": "debug",
+      "program": "${workspaceFolder}/src/cmd/main.go",
+      "cwd": "${workspaceFolder}",
       "showLog": true
     }
   ]
